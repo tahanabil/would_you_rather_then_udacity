@@ -14,8 +14,14 @@ code {
     monospace;
 }
 .nav {
-  background-color: aqua;
+  background-color: black;
   flex-direction: row;
+  color: white;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
 }
 .nav ul {
   display: flex;

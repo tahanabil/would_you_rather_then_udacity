@@ -1,3 +1,5 @@
+/** @format */
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,62 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.LoginForm {
+  border: 1px gray solid;
+  border-radius: 5px;
+  width: 400px;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.LoginForm .header {
+  background-color: gray;
+  height: 60px;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.LoginForm .Body {
+  height: 100px;
+}
+
+.LoginForm .userloginLabel {
+  color: darkblue;
+}
+
+.LoginForm .userlogins {
+}
+
+.LoginForm .loginButtonDiv {
+  position: absolute;
+  bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.LoginForm button {
+  background: darkred;
+  border: 0;
+  color: white;
+
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.LoginForm button:hover {
+  background: rgb(156, 53, 53);
+  border: 0;
+  color: white;
+
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
 }
