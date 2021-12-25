@@ -1,7 +1,6 @@
 /** @format */
 
-import React from 'react';
-import { Component } from 'react/cjs/react.production.min';
+import React,{ Component } from 'react'; 
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
@@ -20,12 +19,9 @@ class NavBar extends Component {
             </li>
             <li>
               <Link to="/"> Leadr board</Link>
-            </li>
-          </ul>
-
-          <ul>
-            <li className="right">{UserName}</li>
-            <li className="right">
+            </li> 
+            <li className="">{UserName}</li>
+            <li className="">
               <Link to="/">Sign out</Link>
             </li>
           </ul>
