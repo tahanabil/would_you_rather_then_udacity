@@ -9,6 +9,9 @@ import LeaderBoard from '../src/components/LeaderBoard';
 import { Component } from 'react/cjs/react.production.min';
 import { connect } from 'react-redux';
 import { initiatedata } from '../src/actions/shared';
+import LoadingBar from 'react-redux-loading';
+import NavBar from '../src/components/NavBar';
+import ViewPoll from './components/ViewPoll';
 
 class App extends Component {
   componentDidMount() {
@@ -16,17 +19,49 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
+    const IsLoged = Object.keys(this.props.authed).length === 1 ? true : false;
+    // console.log(Object.keys(this.props.authed).length);
+    // console.log(IsLoged);
+
+    const unAuthorisedUser = () => (
+      <Routes>
+        <Route path="/" element={<Login />} />{' '}
+      </Routes>
+    );
+
+    const logedCompmnenet = () => (
+      <div>
+        <NavBar />
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/main" element={<Main />} />
+          <Route path="/" element={<Main />} />
           <Route path="/new" element={<NewQuestion />} />
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
+          <Route path="/ViewPoll/:QID" element={<ViewPoll />} />
         </Routes>
+      </div>
+    );
+
+    const RenderComponenet = () => {
+      if (IsLoged) {
+        return logedCompmnenet();
+      } else {
+        return unAuthorisedUser();
+      }
+    };
+
+    return (
+      <div className="App">
+        <LoadingBar />
+        {this.props.isLoading && RenderComponenet()}
       </div>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ users, loadingBar, authed }) {
+  // console.warn('isLoading mapping:', users === {});
+  // console.warn('loadingBar mapping:', !loadingBar['default']);
+  return { isLoading: !loadingBar['default'] ? true : false, ...users, authed };
+}
+
+export default connect(mapStateToProps)(App);
