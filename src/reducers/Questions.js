@@ -1,6 +1,6 @@
 /** @format */
 
-import { RECIVE_QUESTIONS, ADD_VOATE } from '../actions/Question';
+import { RECIVE_QUESTIONS, ADD_VOATE, ADD_NEW_POLL } from '../actions/Question';
 
 export function QuestionsReducer(state = {}, action) {
   switch (action.type) {
@@ -8,15 +8,20 @@ export function QuestionsReducer(state = {}, action) {
       return { ...state, ...action.questions };
     case ADD_VOATE:
       const { authed, qid, answer } = action;
-
-      return {
+      const newState = {
         ...state,
         [qid]: {
           ...state[qid],
-          votes: state[qid][answer].votes.concat(authed),
+          [answer]: {
+            ...state[qid][answer],
+            votes: state[qid][answer].votes.concat(authed),
+          },
         },
       };
-
+      console.log('New State : ', newState);
+      return newState;
+    case ADD_NEW_POLL:
+      return { ...state, [action.poll.id]: action.poll };
     default:
       return state;
   }

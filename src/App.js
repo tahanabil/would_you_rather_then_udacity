@@ -34,7 +34,7 @@ class App extends Component {
         <NavBar />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/new" element={<NewQuestion />} />
+          <Route path="/NewQuestions" element={<NewQuestion />} />
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
           <Route path="/ViewPoll/:QID" element={<ViewPoll />} />
         </Routes>

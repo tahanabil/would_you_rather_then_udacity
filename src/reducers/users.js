@@ -1,6 +1,10 @@
 /** @format */
 
-import { RECIVE_USERS, ADD_NEW_ANSWER } from '../actions/Users';
+import {
+  RECIVE_USERS,
+  ADD_NEW_ANSWER,
+  ADD_USER_CREATE_NEW_POLL,
+} from '../actions/Users';
 
 export function UserReducer(state = {}, action) {
   switch (action.type) {
@@ -14,6 +18,16 @@ export function UserReducer(state = {}, action) {
         [authed]: {
           ...state[authed],
           answers: { ...state[authed].answers, [qid]: answer },
+        },
+      };
+
+    case ADD_USER_CREATE_NEW_POLL:
+      const userID = action.poll.author;
+      return {
+        ...state,
+        [userID]: {
+          ...state[userID],
+          questions: state[userID].questions.concat(action.poll.id),
         },
       };
 

@@ -21,5 +21,6 @@ export function saveQuestionAnswer(authed, qid, answer) {
 }
 
 export function saveQuestion(info) {
+  console.log('saveQuestion:', 'ttttt');
   return _saveQuestion(info);
 }

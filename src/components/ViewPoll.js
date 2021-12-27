@@ -28,6 +28,18 @@ function ViewPoll(connectMaps) {
     setOptionValue(value);
   };
 
+  const voateQ1 = currentQuestion.optionOne.votes.length;
+
+  const voateQ2 = currentQuestion.optionTwo.votes.length;
+  const totalVoate = voateQ1 + voateQ2;
+
+  const isQ1Selected = authed.answers[id] === 'optionOne';
+  console.log('authed : ', authed.answers[id]);
+
+  console.log(voateQ1);
+
+  console.log(voateQ2);
+
   //   console.log('QuestionCreator', isAnswered);
   console.log('current Question : ', currentQuestion);
 
@@ -43,10 +55,9 @@ function ViewPoll(connectMaps) {
           />
 
           <div className="questionBodyContent">
-            <p>Would you rather ...</p>
-
             {!isAnswered ? (
               <div>
+                <p>Would you rather ...</p>
                 <div>
                   <input
                     type={'radio'}
@@ -76,7 +87,45 @@ function ViewPoll(connectMaps) {
                 </div>
               </div>
             ) : (
-              <div>View poolll</div>
+              <div>
+                <h2>Result</h2>
+                <div className="PollAnswer">
+                  <label>
+                    Would you rather to be {currentQuestion.optionOne.text} ?
+                  </label>
+                  <progress value={voateQ1} max={totalVoate}>
+                    {voateQ1}
+                  </progress>
+                  <div className="voateBar">
+                    {voateQ1} out of {totalVoate}
+                  </div>
+
+                  {isQ1Selected && (
+                    <div className="voteIcon">
+                      YOU <br />
+                      VOTE!
+                    </div>
+                  )}
+                </div>
+                <div className="PollAnswer">
+                  <label>
+                    Would you rather to be {currentQuestion.optionTwo.text} ?
+                  </label>
+                  <progress value={voateQ2} max={totalVoate}>
+                    {voateQ2}
+                  </progress>
+                  <div className="voateBar">
+                    {voateQ2} out of {totalVoate}
+                  </div>
+
+                  {!isQ1Selected && (
+                    <div className="voteIcon">
+                      YOU <br />
+                      VOTE!
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
           </div>
         </div>

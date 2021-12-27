@@ -33,8 +33,12 @@ function mapStateToProps({ questions, authed, users }) {
   // console.log('questions', questions);
 
   const questionsValues = Object.values(questions);
-  const QAnswered = questionsValues.filter((q) => answers.includes(q.id));
-  const QUnAnswered = questionsValues.filter((q) => !answers.includes(q.id));
+  const QAnswered = questionsValues
+    .filter((q) => answers.includes(q.id))
+    .sort((x, y) => y.timestamp - x.timestamp);
+  const QUnAnswered = questionsValues
+    .filter((q) => !answers.includes(q.id))
+    .sort((x, y) => y.timestamp - x.timestamp);
 
   // console.log('QAnswered :', QAnswered);
   // console.log('QUnAnswered :', QUnAnswered);
