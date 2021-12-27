@@ -1,7 +1,7 @@
 /** @format */
 
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from '../src/components/Login';
 import Main from '../src/components/Main';
 import NewQuestion from '../src/components/NewQuestions';
@@ -25,7 +25,7 @@ class App extends Component {
 
     const unAuthorisedUser = () => (
       <Routes>
-        <Route path="/" element={<Login />} />{' '}
+        <Route path="*" element={<Login />} />{' '}
       </Routes>
     );
 
@@ -44,7 +44,9 @@ class App extends Component {
     const RenderComponenet = () => {
       if (IsLoged) {
         return logedCompmnenet();
-      } else {
+      }
+
+      if (!IsLoged) {
         return unAuthorisedUser();
       }
     };
