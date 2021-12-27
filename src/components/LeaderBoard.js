@@ -12,7 +12,7 @@ class LeaderBoard extends Component {
         <h1>Leader Board</h1>
         {leaders.map((e) => {
           return (
-            <div className="leaderContiners">
+            <div className="leaderContiners" key={e.name}>
               <div>
                 <img src={e.avatarURL} alt="" className="avaterlb" />
               </div>

@@ -13,6 +13,8 @@ import LoadingBar from 'react-redux-loading';
 import NavBar from '../src/components/NavBar';
 import ViewPoll from './components/ViewPoll';
 
+import P404 from '../src/components/P404';
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(initiatedata());
@@ -37,6 +39,7 @@ class App extends Component {
           <Route path="/NewQuestions" element={<NewQuestion />} />
           <Route path="/LeaderBoard" element={<LeaderBoard />} />
           <Route path="/ViewPoll/:QID" element={<ViewPoll />} />
+          <Route path="*" element={<P404 />} />
         </Routes>
       </div>
     );

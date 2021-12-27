@@ -1,17 +1,27 @@
 /** @format */
 
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AddNewAnswer } from '../actions/Question';
 
+import P404 from '../components/P404';
+
 function ViewPoll(connectMaps) {
   //var { Refresh, setRefresh } = this.useState('Refresh');
+
+  let navigate = useNavigate();
+
   const params = useParams();
   const [OptionValue, setOptionValue] = useState('');
   //const { dispatch } = this;
   const id = params.QID;
   const currentQuestion = connectMaps.questions[id];
+
+  if (!currentQuestion) {
+    return <P404 />;
+  }
+
   const QuestionCreator = connectMaps.users[currentQuestion.author];
   const authed = connectMaps.users[connectMaps.authed.id];
 
@@ -34,14 +44,12 @@ function ViewPoll(connectMaps) {
   const totalVoate = voateQ1 + voateQ2;
 
   const isQ1Selected = authed.answers[id] === 'optionOne';
-  console.log('authed : ', authed.answers[id]);
 
-  console.log(voateQ1);
+  // console.log(voateQ1);
 
-  console.log(voateQ2);
+  // console.log(voateQ2);
 
   //   console.log('QuestionCreator', isAnswered);
-  console.log('current Question : ', currentQuestion);
 
   return (
     <div>
