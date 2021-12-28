@@ -36,7 +36,7 @@ class Question extends Component {
               <span>{currentQuestion.optionOne.text}...Or</span>
 
               <div>
-                <Link to={`/ViewPoll/${id}`}>
+                <Link to={`/questions/${id}`}>
                   <button>View poll</button>
                 </Link>
               </div>

@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AddNewAnswer } from '../actions/Question';
 
@@ -10,7 +10,7 @@ import P404 from '../components/P404';
 function ViewPoll(connectMaps) {
   //var { Refresh, setRefresh } = this.useState('Refresh');
 
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
 
   const params = useParams();
   const [OptionValue, setOptionValue] = useState('');

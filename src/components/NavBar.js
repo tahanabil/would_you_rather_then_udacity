@@ -1,10 +1,9 @@
 /** @format */
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authedUserLogedOut } from '../actions/Authed';
-import { tab } from '@testing-library/user-event/dist/tab';
 
 class NavBar extends Component {
   render() {
@@ -24,10 +23,10 @@ class NavBar extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/NewQuestions"> New question</Link>
+              <Link to="/add"> New question</Link>
             </li>
             <li>
-              <Link to="/LeaderBoard"> Leadr board</Link>
+              <Link to="/leaderboard"> Leadr board</Link>
             </li>
             <li className="">
               <div className="userdetails">
@@ -36,7 +35,11 @@ class NavBar extends Component {
                   <tbody>
                     <tr>
                       <td valign="top">
-                        <img src={user.avatarURL} className="avater"></img>
+                        <img
+                          src={user.avatarURL}
+                          className="avater"
+                          alt=""
+                        ></img>
                       </td>
                       <td valign="top">{user.name}</td>
                     </tr>
@@ -45,7 +48,7 @@ class NavBar extends Component {
               </div>
             </li>
             <li className="">
-              <a href="#" onClick={handleSignout}>
+              <a href="/#" onClick={handleSignout}>
                 Sign out
               </a>
             </li>

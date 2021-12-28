@@ -1,7 +1,7 @@
 /** @format */
 
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from '../src/components/Login';
 import Main from '../src/components/Main';
 import NewQuestion from '../src/components/NewQuestions';
@@ -36,9 +36,9 @@ class App extends Component {
         <NavBar />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/NewQuestions" element={<NewQuestion />} />
-          <Route path="/LeaderBoard" element={<LeaderBoard />} />
-          <Route path="/ViewPoll/:QID" element={<ViewPoll />} />
+          <Route path="/add" element={<NewQuestion />} />
+          <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/questions/:QID" element={<ViewPoll />} />
           <Route path="*" element={<P404 />} />
         </Routes>
       </div>
